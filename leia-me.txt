@@ -1,0 +1,22 @@
+para criar o projeto
+instalar com o choco
+  choco install jdk11
+  choco install maven
+  choco install gradle
+  choco install spring-boot-cli
+
+checar instalacao
+  java -version
+  mvn -v
+  gradle -v
+  spring version
+
+para criar um projeto
+spring init -x -a=CtrlPonto -g=br.com.11tech -name=ControlePonto
+
+para rodar
+mvn package
+mvn dependency:tree
+mvn spring-boot:run
+
+
