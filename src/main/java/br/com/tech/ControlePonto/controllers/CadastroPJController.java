@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Value;
 import java.util.*;
+import br.com.tech.ControlePonto.utils.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -68,6 +69,18 @@ public class CadastroPJController {
         }catch(Exception e)
         {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping(path = "/list", produces = "application/json")
+    public ResponseEntity<List<Map<String, Object>>> getList()
+    {   
+        try{
+            Banco bd = new Banco();
+            return ResponseEntity.ok(bd.getItens());
+        }catch(Exception e)
+        {
+            return ResponseEntity.badRequest().body(null);
         }
     }
 }
