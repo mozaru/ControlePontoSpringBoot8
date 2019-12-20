@@ -5,26 +5,18 @@ import org.springframework.boot.autoconfigure.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 import br.com.tech.ControlePonto.utils.*;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class CadastroPJController {
-
-    @Value("${bd.stringconexao}")
-    private String dbUrl;
-
-	private static String texto;
-    @Value("${bd.stringconexao}")
-    public void setTeste(String valor) {
-        texto = valor;
-    }
-
+    
     @GetMapping(path = "/test")
     public ResponseEntity<String> getAll()
     {
-        return ResponseEntity.ok("teste url="+dbUrl+"  ["+texto+"]");
+        return ResponseEntity.ok("teste");
     }
 
     @GetMapping(path = "/map")

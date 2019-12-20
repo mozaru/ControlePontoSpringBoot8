@@ -7,14 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import java.sql.ResultSetMetaData;
+import br.com.tech.ControlePonto.utils.Config;
 
 public class Banco
 {
     private Connection connection;
+
     public Banco()
     {
+        System.out.println("Carregando driver do banco ["+Config._DRIVER_+"]");
         try{
-            Class.forName("org.postgresql.Driver");
+            Class.forName(Config._DRIVER_);
         }
         catch(Exception e)
         {
@@ -26,7 +29,7 @@ public class Banco
     private boolean conectar()
     {
         try{
-            connection = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-103-80.compute-1.amazonaws.com:5432/d6dorkbm03fvrl", "xxwzbzgbbzejmx", "a88d6640d66e2a8b397626d64dff89cb1bbf82b58d28da733afc8ae58e6a1874");
+            connection = DriverManager.getConnection(Config._STRING_CONEXAO_,Config._USER_,Config._PASSWORD_);
             return true;
         }
         catch(Exception e)
