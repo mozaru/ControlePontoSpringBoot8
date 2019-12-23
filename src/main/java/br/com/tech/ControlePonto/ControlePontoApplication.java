@@ -43,12 +43,16 @@ public class ControlePontoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(){
 		return args -> {
+			try{
 			Config._DRIVER_ = env.getProperty("bd.driver");
 			Config._STRING_CONEXAO_ = env.getProperty("bd.stringconexao");
 			Config._USER_ = env.getProperty("bd.user");
 			Config._PASSWORD_ = env.getProperty("bd.password");
-			
-			logger.info("Profile Ativo="+env.getProperty("spring.profiles.active"));
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			logger.info("111Profile Ativo="+env.getProperty("spring.profiles.active"));
 			logger.info("Profile Banco="+env.getProperty("bd.profile"));
 			logger.info("_DRIVER_="+Config._DRIVER_);
 			logger.info("_STRING_CONEXAO_="+Config._STRING_CONEXAO_);
